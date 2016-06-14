@@ -161,6 +161,7 @@ extension SearchRepositoryController: UITableViewDataSource {
         }
         
         let view = UIView()
+        view.backgroundColor = UIColor.clearColor()
         let label = UILabel()
         label.font = UIFont.systemFontOfSize(14)
         label.text = "\(searchRepos.totalCount) Repositories"
@@ -189,6 +190,10 @@ extension SearchRepositoryController: UITableViewDelegate {
     }
     
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        if searchRepos.items.isEmpty {
+            return 0
+        }
         return 50
     }
 }
