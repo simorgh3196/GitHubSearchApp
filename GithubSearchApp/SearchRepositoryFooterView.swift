@@ -39,7 +39,7 @@ final class SearchRepositoryFooterView: UIView {
     private func prepareLabelView() {
         
         labelView = UIView()
-        labelView.backgroundColor = UIColor(white: 0.8, alpha: 0.7)
+        labelView.backgroundColor = UIColor(red: 26/255, green: 188/255, blue: 156/255, alpha: 0.8)
         labelView.layer.cornerRadius = 10
         addSubview(labelView)
         
@@ -55,7 +55,7 @@ final class SearchRepositoryFooterView: UIView {
     private func prepareLabel() {
         
         label = UILabel()
-        label.font = UIFont.systemFontOfSize(14)
+        label.font = UIFont.systemFontOfSize(16)
         label.textAlignment = .Center
         labelView.addSubview(label)
         

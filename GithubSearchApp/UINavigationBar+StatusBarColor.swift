@@ -10,6 +10,11 @@ import UIKit
 
 
 extension UINavigationController {
+    final func hideShadow() {
+        navigationBar.setBackgroundImage(UIImage(), forBarMetrics: .Default)
+        navigationBar.shadowImage = UIImage()
+    }
+    
     public override func childViewControllerForStatusBarStyle() -> UIViewController? {
         return self.visibleViewController
     }

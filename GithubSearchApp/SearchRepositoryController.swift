@@ -30,6 +30,7 @@ final class SearchRepositoryController: UIViewController {
         
         prepareItems()
         operationQueue = NSOperationQueue()
+        navigationController?.hideShadow()
         
         prepareNavigationTextField()
         prepareSegmentControls()
