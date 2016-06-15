@@ -21,12 +21,14 @@ final class SearchRepositoryController: UIViewController {
     
     private var searchRepos: SearchResponse<Repository>!
     private var textField: NavigationSearchTextField!
+    private var operationQueue: NSOperationQueue!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         prepareItems()
+        operationQueue = NSOperationQueue()
         
         prepareNavigationTextField()
         prepareSegmentControls()
@@ -83,35 +85,40 @@ final class SearchRepositoryController: UIViewController {
     
     private func sendSearchRequest() {
         
-        guard let text = textField.text where !text.isEmpty else { return }
-        let sort = GitHubAPI.SearchSortType(rawValue: self.sortSegmentControl.selectedSegmentIndex)
-        let order = GitHubAPI.OrderType(rawValue: self.orderSegmentControl.selectedSegmentIndex)
-        let request = GitHubAPI.SearchRepositoriesRequest(query: text, sort: sort, order: order)
-        
-        print(request)
-        Session.sendRequest(request) { [weak self]  result in
-            switch result {
-            case .Success(let repositories):
-                self?.searchRepos = repositories
-                self?.tableView.reloadData()
-                
-            case .Failure(let error):
-                let errorMessage: String
-                switch error {
-                case .ResponseError(let error as GitHubError):
-                    errorMessage = error.message
+        operationQueue.cancelAllOperations()
+        operationQueue.addOperationWithBlock({ [weak self] in
+            guard let text = self?.textField.text
+                , let sortIndex = self?.sortSegmentControl.selectedSegmentIndex
+                , let orderIndex = self?.orderSegmentControl.selectedSegmentIndex
+                where !text.isEmpty else { return }
+            let sort = GitHubAPI.SearchSortType(rawValue: sortIndex)
+            let order = GitHubAPI.OrderType(rawValue: orderIndex)
+            let request = GitHubAPI.SearchRepositoriesRequest(query: text, sort: sort, order: order)
+            
+            print(request)
+            Session.sendRequest(request) { [weak self]  result in
+                switch result {
+                case .Success(let repositories):
+                    self?.searchRepos = repositories
+                    self?.tableView.reloadData()
                     
-                default:
-                    errorMessage = "Unknown error occurred"
+                case .Failure(let error):
+                    let errorMessage: String
+                    switch error {
+                    case .ResponseError(let error as GitHubError):
+                        errorMessage = error.message
+                    default:
+                        errorMessage = "Unknown error occurred"
+                    }
+                    
+                    let alert = UIAlertController(title: "Error",
+                        message: errorMessage,
+                        preferredStyle: .Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self?.presentViewController(alert, animated: true, completion: nil)
                 }
-                
-                let alert = UIAlertController(title: "Error",
-                                              message: errorMessage,
-                                              preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                self?.presentViewController(alert, animated: true, completion: nil)
             }
-        }
+        })
     }
     
     private dynamic func textFieldTextDidChange(sender: NSNotification) {
