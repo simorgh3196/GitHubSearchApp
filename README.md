@@ -1,9 +1,14 @@
 # GitHubSearchApp
 Search github repositories application for iOS.
 
-## ScreenShot
-![ScreenShot](https://cloud.githubusercontent.com/assets/9880704/16057068/2925d8f6-32b3-11e6-8e7a-6e39908301b6.png)
+## Demo
+![githubsearchappdemo](https://cloud.githubusercontent.com/assets/9880704/16070711/44c4a6b4-3312-11e6-83ee-8b9595d58307.gif)
 
 ## Images
 - [Icons8](https://icons8.com/)
 - [GitHub](https://github.com/logos)
+
+## Library
+- [APIKit](https://github.com/ishkawa/APIKit)
+- [Himotoki](https://github.com/ikesyo/Himotoki)
+- [SVProgressHUD](https://github.com/SVProgressHUD/SVProgressHUD)
