@@ -15,6 +15,7 @@ final class SearchRepositoryFooterView: UIView {
     
     var label: UILabel!
     
+    
     convenience init() {
         self.init(frame: CGRectZero)
     }

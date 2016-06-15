@@ -10,6 +10,8 @@ import Foundation
 import Himotoki
 
 
+// MARK: - Owner - 
+
 struct Owner: Decodable {
     let login: String
     let id: Int
@@ -18,6 +20,7 @@ struct Owner: Decodable {
     let url: String
     let receivedEventsUrl: String
     let type: String
+    
     
     static func decode(e: Extractor) throws -> Owner {
         return try Owner(

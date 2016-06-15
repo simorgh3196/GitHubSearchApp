@@ -10,10 +10,13 @@ import Foundation
 import Himotoki
 
 
+// MARK: - SearchResponse -
+
 struct SearchResponse<Item: Decodable>: Decodable {
     let totalCount: Int
     let incompleteResults: Bool
     let items: [Item]
+    
     
     init(totalCount: Int = 0, incompleteResults: Bool = false, items: [Item] = []) {
         self.totalCount = totalCount

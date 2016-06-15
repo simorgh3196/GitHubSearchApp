@@ -11,7 +11,11 @@ import APIKit
 import Himotoki
 
 
+// MARK: - GitHubAPI -
+
 final class GitHubAPI {
+    
+    // MARK: SearchSortType
     
     enum SearchSortType: Int {
         case match
@@ -29,6 +33,9 @@ final class GitHubAPI {
         }
     }
     
+    
+    // MARK: OrderType
+    
     enum OrderType: Int {
         case desc
         case asc
@@ -40,6 +47,9 @@ final class GitHubAPI {
             }
         }
     }
+    
+    
+    // MARK: SearchRepositoriesRequest
     
     struct SearchRepositoriesRequest: GitHubRequestType {
         typealias Response = SearchResponse<Repository>
@@ -65,6 +75,7 @@ final class GitHubAPI {
             }
         }
         
+        
         init(query: String, sort: SearchSortType? = nil, order: OrderType? = nil) {
             self.query = query
             self.sort = sort ?? .match
@@ -73,5 +84,3 @@ final class GitHubAPI {
     }
 
 }
-
-

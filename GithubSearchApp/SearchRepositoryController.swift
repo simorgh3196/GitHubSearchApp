@@ -137,7 +137,7 @@ final class SearchRepositoryController: UIViewController {
 // MARK: - :UITableViewDataSource -
 
 extension SearchRepositoryController: UITableViewDataSource {
-    
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         noResultView.hidden = !searchRepos.items.isEmpty
         return searchRepos.items.count
@@ -161,7 +161,6 @@ extension SearchRepositoryController: UITableViewDataSource {
         
         return SearchRepositoryFooterView()
     }
-    
 }
 
 

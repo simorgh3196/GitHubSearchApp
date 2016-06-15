@@ -10,6 +10,8 @@ import Foundation
 import Himotoki
 
 
+// MARK: - Repository -
+
 struct Repository: Decodable {
     let id: Int
     let name: String
@@ -69,5 +71,4 @@ struct Repository: Decodable {
             defaultBranch   : e <|? "default_branch",
             score           : e <| "score")
     }
-    
 }

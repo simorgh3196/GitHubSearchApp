@@ -31,4 +31,5 @@ final class DateFormatter: NSDateFormatter {
         
         return DateFormatter.instance.stringFromDate(date)
     }
+    
 }

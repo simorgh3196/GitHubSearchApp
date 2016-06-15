@@ -11,6 +11,8 @@ import APIKit
 import Himotoki
 
 
+// MARK: - GitHubRequestType -
+
 protocol GitHubRequestType: RequestType {
 }
 
@@ -35,6 +37,9 @@ extension GitHubRequestType {
         }
     }
 }
+
+
+// MARK: - GitHubError -
 
 struct GitHubError: ErrorType {
     let message: String
