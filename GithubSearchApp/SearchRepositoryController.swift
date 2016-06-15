@@ -186,11 +186,6 @@ extension SearchRepositoryController: UITableViewDataSource {
 
 extension SearchRepositoryController: UITableViewDelegate {
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        view.endEditing(true)
-        tableView.deselectRowAtIndexPath(indexPath, animated: true)
-    }
-    
     func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         
         if searchRepos.items.isEmpty {
@@ -206,6 +201,6 @@ extension SearchRepositoryController: UITableViewDelegate {
 extension SearchRepositoryController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
-        view.endEditing(true)
+        textField.endEditing(true)
     }
 }
