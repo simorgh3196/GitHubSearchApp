@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+// MARK: - Constraint -
+
 final class Constraint: NSLayoutConstraint {
     
     static func new(item: AnyObject, _ attr: NSLayoutAttribute, to: AnyObject?, _ attrTo: NSLayoutAttribute, constant: CGFloat = 0.0, multiplier: CGFloat = 1.0, relate: NSLayoutRelation = .Equal, priority: UILayoutPriority = UILayoutPriorityRequired) -> NSLayoutConstraint {

@@ -9,6 +9,8 @@
 import Foundation
 
 
+// MARK: - NumberFormatter -
+
 final class NumberFormatter: NSNumberFormatter {
     
     static let instance = NumberFormatter()

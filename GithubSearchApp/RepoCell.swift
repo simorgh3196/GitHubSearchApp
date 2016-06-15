@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RepoCell: UITableViewCell {
+final class RepoCell: UITableViewCell {
     
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
