@@ -89,8 +89,6 @@ final class SearchRepositoryController: UIViewController {
         
         operationQueue.cancelAllOperations()
         operationQueue.addOperationWithBlock({ [weak self] in
-            SVProgressHUD.show()
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             guard let text = self?.textField.text
                 , let sortIndex = self?.sortSegmentControl.selectedSegmentIndex
                 , let orderIndex = self?.orderSegmentControl.selectedSegmentIndex
@@ -100,6 +98,8 @@ final class SearchRepositoryController: UIViewController {
             let request = GitHubAPI.SearchRepositoriesRequest(query: text, sort: sort, order: order)
             
             print(request)
+            SVProgressHUD.show()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             Session.sendRequest(request) { [weak self]  result in
                 SVProgressHUD.dismiss()
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
