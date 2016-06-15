@@ -69,7 +69,7 @@ final class GitHubAPI {
         var parameters: AnyObject? {
             switch sort {
             case .match:
-                return ["q": query, "order": order.param]
+                return ["q": query]
             default:
                 return ["q": query, "order": order.param, "sort": sort.param]
             }
