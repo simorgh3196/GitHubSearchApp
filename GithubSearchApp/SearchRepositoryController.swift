@@ -12,7 +12,7 @@ import APIKit
 
 // MARK: - SearchRepositoryController -
 
-class SearchRepositoryController: UIViewController {
+final class SearchRepositoryController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sortSegmentControl: UISegmentedControl!
@@ -20,7 +20,7 @@ class SearchRepositoryController: UIViewController {
     @IBOutlet weak var noResultView: UIView!
     
     private var searchRepos: SearchResponse<Repository>!
-    private var textField: UITextField!
+    private var textField: NavigationSearchTextField!
     
     
     override func viewDidLoad() {
@@ -40,15 +40,8 @@ class SearchRepositoryController: UIViewController {
     private func prepareNavigationTextField() {
         
         guard let naviBar = navigationController?.navigationBar else { return }
-        textField = UITextField(frame: CGRect(x: 10, y: 7, width: naviBar.frame.width - 20, height: 30))
-        textField.backgroundColor = UIColor.whiteColor()
-        textField.layer.cornerRadius = 3
-        textField.placeholder = "Search Repositories"
-        let searchImageView = UIImageView(image: UIImage(named: "search"))
-        searchImageView.frame = CGRect(x: 10, y: 0, width: 36, height: 20)
-        searchImageView.contentMode = .ScaleAspectFit
-        textField.leftView = searchImageView
-        textField.leftViewMode = .Always
+        let frame = CGRect(x: 10, y: 7, width: naviBar.frame.width - 20, height: 30)
+        textField = NavigationSearchTextField(frame: frame)
         
         NSNotificationCenter
             .defaultCenter()
@@ -62,10 +55,10 @@ class SearchRepositoryController: UIViewController {
     private func prepareSegmentControls() {
         
         sortSegmentControl.addTarget(self,
-                                     action: #selector(sendSearchRequest(_:)),
+                                     action: #selector(didChangeSegmentedControl(_:)),
                                      forControlEvents: .ValueChanged)
         orderSegmentControl.addTarget(self,
-                                      action: #selector(sendSearchRequest(_:)),
+                                      action: #selector(didChangeSegmentedControl(_:)),
                                       forControlEvents: .ValueChanged)
     }
     
@@ -79,7 +72,11 @@ class SearchRepositoryController: UIViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
     }
     
-    private dynamic func sendSearchRequest(sender: AnyObject? = nil) {
+    private dynamic func didChangeSegmentedControl(sender: UISegmentedControl) {
+        sendSearchRequest()
+    }
+    
+    private func sendSearchRequest() {
         
         guard let text = textField.text where !text.isEmpty else { return }
         let sort = GitHubAPI.SearchSortType(rawValue: self.sortSegmentControl.selectedSegmentIndex)
@@ -94,21 +91,20 @@ class SearchRepositoryController: UIViewController {
                 self?.tableView.reloadData()
                 
             case .Failure(let error):
+                let errorMessage: String
                 switch error {
                 case .ResponseError(let error as GitHubError):
-                    let alert = UIAlertController(title: "Error",
-                                                  message: error.message,
-                                                  preferredStyle: .Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    self?.presentViewController(alert, animated: true, completion: nil)
+                    errorMessage = error.message
                     
                 default:
-                    let alert = UIAlertController(title: "Error",
-                                                  message: "Unknown error occurred",
-                                                  preferredStyle: .Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    self?.presentViewController(alert, animated: true, completion: nil)
+                    errorMessage = "Unknown error occurred"
                 }
+                
+                let alert = UIAlertController(title: "Error",
+                                              message: errorMessage,
+                                              preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self?.presentViewController(alert, animated: true, completion: nil)
             }
         }
     }
@@ -160,21 +156,10 @@ extension SearchRepositoryController: UITableViewDataSource {
             return nil
         }
         
-        let view = UIView()
-        view.backgroundColor = UIColor.clearColor()
-        let label = UILabel()
-        label.font = UIFont.systemFontOfSize(14)
-        label.text = "\(searchRepos.totalCount) Repositories"
-        label.textAlignment = .Center
-        view.addSubview(label)
+        let view = SearchRepositoryFooterView()
+        view.label.text = "\(searchRepos.totalCount) Repositories"
         
-        label.translatesAutoresizingMaskIntoConstraints = false
-        view.addConstraints([
-            Constraint.new(label, .CenterX, to: view, .CenterX),
-            Constraint.new(label, .CenterY, to: view, .CenterY),
-            ])
-        
-        return view
+        return SearchRepositoryFooterView()
     }
     
 }

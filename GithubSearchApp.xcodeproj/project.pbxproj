@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		F414A0831D107AD600FFF5D7 /* UINavigationBar+StatusBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414A0821D107AD600FFF5D7 /* UINavigationBar+StatusBarColor.swift */; };
 		F414A0851D1087B300FFF5D7 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414A0841D1087B300FFF5D7 /* Constraint.swift */; };
+		F414A0871D10F76700FFF5D7 /* SearchRepositoryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414A0861D10F76700FFF5D7 /* SearchRepositoryFooterView.swift */; };
+		F414A08B1D10F9B900FFF5D7 /* NavigationSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414A08A1D10F9B900FFF5D7 /* NavigationSearchTextField.swift */; };
 		F4E105671D0B2132005B5BD8 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E105661D0B2132005B5BD8 /* DateFormatter.swift */; };
 		F4E105691D0B2531005B5BD8 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E105681D0B2531005B5BD8 /* NumberFormatter.swift */; };
 		F4E627981D0A8ADA00F49D1B /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E627971D0A8ADA00F49D1B /* Owner.swift */; };
@@ -46,6 +48,8 @@
 /* Begin PBXFileReference section */
 		F414A0821D107AD600FFF5D7 /* UINavigationBar+StatusBarColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+StatusBarColor.swift"; sourceTree = "<group>"; };
 		F414A0841D1087B300FFF5D7 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
+		F414A0861D10F76700FFF5D7 /* SearchRepositoryFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepositoryFooterView.swift; sourceTree = "<group>"; };
+		F414A08A1D10F9B900FFF5D7 /* NavigationSearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationSearchTextField.swift; sourceTree = "<group>"; };
 		F4E105661D0B2132005B5BD8 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		F4E105681D0B2531005B5BD8 /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		F4E627971D0A8ADA00F49D1B /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
@@ -92,6 +96,25 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		F414A0881D10F97800FFF5D7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F414A0861D10F76700FFF5D7 /* SearchRepositoryFooterView.swift */,
+				F414A08A1D10F9B900FFF5D7 /* NavigationSearchTextField.swift */,
+				F4E627A31D0B00D300F49D1B /* RepoCell.swift */,
+				F4E627A41D0B00D300F49D1B /* RepoCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		F414A0891D10F98A00FFF5D7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				F4F789CA1D08B03400C2392B /* SearchRepositoryController.swift */,
+			);
+			name = ViewController;
+			sourceTree = "<group>";
+		};
 		F4E627961D0A8ACF00F49D1B /* Structure */ = {
 			isa = PBXGroup;
 			children = (
@@ -123,14 +146,13 @@
 			isa = PBXGroup;
 			children = (
 				F4F789C81D08B03400C2392B /* AppDelegate.swift */,
-				F4F789CA1D08B03400C2392B /* SearchRepositoryController.swift */,
-				F4E627A31D0B00D300F49D1B /* RepoCell.swift */,
-				F4E627A41D0B00D300F49D1B /* RepoCell.xib */,
+				F4F789CC1D08B03400C2392B /* Main.storyboard */,
+				F4F789D11D08B03400C2392B /* LaunchScreen.storyboard */,
+				F414A0891D10F98A00FFF5D7 /* ViewController */,
+				F414A0881D10F97800FFF5D7 /* View */,
 				F4F789E61D08B45E00C2392B /* Request */,
 				F414A0811D10624F00FFF5D7 /* Utils */,
 				F4F789CF1D08B03400C2392B /* Assets.xcassets */,
-				F4F789CC1D08B03400C2392B /* Main.storyboard */,
-				F4F789D11D08B03400C2392B /* LaunchScreen.storyboard */,
 				F4F789D41D08B03400C2392B /* Info.plist */,
 			);
 			path = GithubSearchApp;
@@ -252,6 +274,8 @@
 			files = (
 				F414A0851D1087B300FFF5D7 /* Constraint.swift in Sources */,
 				F4E6279C1D0A8B2800F49D1B /* SearchResponse.swift in Sources */,
+				F414A0871D10F76700FFF5D7 /* SearchRepositoryFooterView.swift in Sources */,
+				F414A08B1D10F9B900FFF5D7 /* NavigationSearchTextField.swift in Sources */,
 				F4F789E81D08B46F00C2392B /* GitHubRequestType.swift in Sources */,
 				F4F789CB1D08B03400C2392B /* SearchRepositoryController.swift in Sources */,
 				F4E105671D0B2132005B5BD8 /* DateFormatter.swift in Sources */,
