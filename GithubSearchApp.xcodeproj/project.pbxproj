@@ -11,6 +11,7 @@
 		F414A0851D1087B300FFF5D7 /* Constraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414A0841D1087B300FFF5D7 /* Constraint.swift */; };
 		F414A0871D10F76700FFF5D7 /* SearchRepositoryFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414A0861D10F76700FFF5D7 /* SearchRepositoryFooterView.swift */; };
 		F414A08B1D10F9B900FFF5D7 /* NavigationSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F414A08A1D10F9B900FFF5D7 /* NavigationSearchTextField.swift */; };
+		F414A08D1D1125E100FFF5D7 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F414A08C1D1125E100FFF5D7 /* SVProgressHUD.framework */; };
 		F4E105671D0B2132005B5BD8 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E105661D0B2132005B5BD8 /* DateFormatter.swift */; };
 		F4E105691D0B2531005B5BD8 /* NumberFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E105681D0B2531005B5BD8 /* NumberFormatter.swift */; };
 		F4E627981D0A8ADA00F49D1B /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4E627971D0A8ADA00F49D1B /* Owner.swift */; };
@@ -50,6 +51,7 @@
 		F414A0841D1087B300FFF5D7 /* Constraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constraint.swift; sourceTree = "<group>"; };
 		F414A0861D10F76700FFF5D7 /* SearchRepositoryFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRepositoryFooterView.swift; sourceTree = "<group>"; };
 		F414A08A1D10F9B900FFF5D7 /* NavigationSearchTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationSearchTextField.swift; sourceTree = "<group>"; };
+		F414A08C1D1125E100FFF5D7 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
 		F4E105661D0B2132005B5BD8 /* DateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		F4E105681D0B2531005B5BD8 /* NumberFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NumberFormatter.swift; sourceTree = "<group>"; };
 		F4E627971D0A8ADA00F49D1B /* Owner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				F4F789DC1D08B41C00C2392B /* Result.framework in Frameworks */,
 				F4F789E31D08B43D00C2392B /* APIKit.framework in Frameworks */,
 				F4F789E41D08B43D00C2392B /* Himotoki.framework in Frameworks */,
+				F414A08D1D1125E100FFF5D7 /* SVProgressHUD.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -164,6 +167,7 @@
 				F4F789E01D08B43D00C2392B /* APIKit.framework */,
 				F4F789E11D08B43D00C2392B /* Himotoki.framework */,
 				F4F789DB1D08B41C00C2392B /* Result.framework */,
+				F414A08C1D1125E100FFF5D7 /* SVProgressHUD.framework */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -257,6 +261,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/APIKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Himotoki.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework",
 			);
 			name = "Run Script for Carthage";
 			outputPaths = (

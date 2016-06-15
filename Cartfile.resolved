@@ -1,3 +1,4 @@
 github "ikesyo/Himotoki" "2.0.1"
 github "antitypical/Result" "2.1.0"
+github "SVProgressHUD/SVProgressHUD" "2.0.3"
 github "ishkawa/APIKit" "2.0.1"

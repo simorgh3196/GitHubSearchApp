@@ -1,2 +1,3 @@
 github "ishkawa/APIKit" ~> 2.0.0
 github "ikesyo/Himotoki" ~> 2.0
+github "SVProgressHUD/SVProgressHUD"

@@ -8,6 +8,7 @@
 
 import UIKit
 import APIKit
+import SVProgressHUD
 
 
 // MARK: - SearchRepositoryController -
@@ -87,6 +88,8 @@ final class SearchRepositoryController: UIViewController {
         
         operationQueue.cancelAllOperations()
         operationQueue.addOperationWithBlock({ [weak self] in
+            SVProgressHUD.show()
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             guard let text = self?.textField.text
                 , let sortIndex = self?.sortSegmentControl.selectedSegmentIndex
                 , let orderIndex = self?.orderSegmentControl.selectedSegmentIndex
@@ -97,6 +100,8 @@ final class SearchRepositoryController: UIViewController {
             
             print(request)
             Session.sendRequest(request) { [weak self]  result in
+                SVProgressHUD.dismiss()
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 switch result {
                 case .Success(let repositories):
                     self?.searchRepos = repositories
