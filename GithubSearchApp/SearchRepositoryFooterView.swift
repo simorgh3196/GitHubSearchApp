@@ -13,6 +13,7 @@ import UIKit
 
 final class SearchRepositoryFooterView: UIView {
     
+    private var labelView: UIView!
     var label: UILabel!
     
     
@@ -24,13 +25,31 @@ final class SearchRepositoryFooterView: UIView {
         super.init(frame: frame)
         
         backgroundColor = UIColor.clearColor()
+        prepareLabelView()
         prepareLabel()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         
+        prepareLabelView()
         prepareLabel()
+    }
+    
+    private func prepareLabelView() {
+        
+        labelView = UIView()
+        labelView.backgroundColor = UIColor(white: 0.8, alpha: 0.7)
+        labelView.layer.cornerRadius = 10
+        addSubview(labelView)
+        
+        labelView.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints([
+            Constraint.new(labelView, .CenterX, to: self, .CenterX),
+            Constraint.new(labelView, .CenterY, to: self, .CenterY),
+            Constraint.new(labelView, .Width, to: nil, .Width, constant: 200),
+            Constraint.new(labelView, .Height, to: nil, .Height, constant: 44),
+            ])
     }
     
     private func prepareLabel() {
@@ -38,12 +57,12 @@ final class SearchRepositoryFooterView: UIView {
         label = UILabel()
         label.font = UIFont.systemFontOfSize(14)
         label.textAlignment = .Center
-        addSubview(label)
+        labelView.addSubview(label)
         
         label.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints([
-            Constraint.new(label, .CenterX, to: self, .CenterX),
-            Constraint.new(label, .CenterY, to: self, .CenterY),
+        labelView.addConstraints([
+            Constraint.new(label, .CenterX, to: labelView, .CenterX),
+            Constraint.new(label, .CenterY, to: labelView, .CenterY),
             ])
     }
     

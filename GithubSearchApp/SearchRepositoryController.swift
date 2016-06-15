@@ -32,6 +32,14 @@ final class SearchRepositoryController: UIViewController {
         prepareSegmentControls()
         prepareTableView()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard let naviBar = navigationController?.navigationBar else { return }
+        let frame = CGRect(x: 10, y: 5, width: naviBar.frame.width - 20, height: naviBar.frame.height - 10)
+        textField.frame = frame
+    }
         
     private func prepareItems() {
         searchRepos = SearchResponse<Repository>()
@@ -39,17 +47,14 @@ final class SearchRepositoryController: UIViewController {
     
     private func prepareNavigationTextField() {
         
-        guard let naviBar = navigationController?.navigationBar else { return }
-        let frame = CGRect(x: 10, y: 7, width: naviBar.frame.width - 20, height: 30)
-        textField = NavigationSearchTextField(frame: frame)
-        
+        textField = NavigationSearchTextField()
         NSNotificationCenter
             .defaultCenter()
             .addObserver(self,
                          selector: #selector(textFieldTextDidChange(_:)),
                          name: UITextFieldTextDidChangeNotification,
                          object: textField)
-        naviBar.addSubview(textField)
+        navigationController?.navigationBar.addSubview(textField)
     }
     
     private func prepareSegmentControls() {
@@ -159,7 +164,7 @@ extension SearchRepositoryController: UITableViewDataSource {
         let view = SearchRepositoryFooterView()
         view.label.text = "\(searchRepos.totalCount) Repositories"
         
-        return SearchRepositoryFooterView()
+        return view
     }
 }
 

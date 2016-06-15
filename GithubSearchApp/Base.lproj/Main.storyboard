@@ -24,7 +24,7 @@
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8xs-Xd-KD8">
                                         <rect key="frame" x="8" y="8" width="494" height="29"/>
                                         <segments>
-                                            <segment title="Default"/>
+                                            <segment title="Match"/>
                                             <segment title="Stars"/>
                                             <segment title="Forks"/>
                                             <segment title="Updated"/>
